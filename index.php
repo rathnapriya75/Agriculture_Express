@@ -1,72 +1,110 @@
 <?php
-session_start(); 
-if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-    header("Location: adminpage.php");
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include_once('db.php');
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM adminlogin WHERE username = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $_SESSION['admin_logged_in'] = true;
-        $_SESSION['username'] = $username;
-        header("Location: adminpage.php");
-        exit;
-    } else {
-        $error = "Invalid username or password";
-    }
-}
+include('db.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/295/295128.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="admin.css">
-    <title>Admin Login</title>
+    <link rel="stylesheet" href="home.css">
+    <title>Agriculture Marketplace</title>
 </head>
-
 <body>
-    <form action="index.php" method="post">
-        <div class="login-box">
-            <div style="text-align: center; margin-bottom: 10px;">
-                <i class="fas fa-user-shield" style="font-size: 48px; color: #4CAF50;"></i>
+     <!-- Navigation bar starts -->
+     <nav>
+    <div class="logo">AGRICULTURE <span> MARKETPLACE</span></div>
+    <a href="#home">Home</a>
+    <a href="view_products.php">Products</a>
+    <a href="dashboard.php">Dashboard</a>
+    <a href="add_farmer.php">Add Farmers</a>
+    <a href="#contact">Contact</a>
+    <a href="register.php">Register</a>
+</nav>
+
+     <!-- Home Section -->
+    <section class="home">
+        <div class="home-content">
+        <h1>Agriculture <span class="highlight">Marketplace</span></h1>
+            <p>Healthy soil, healthy food! Support your local farmers, support your community! </p>
+            <div class="features">
             </div>
-
-            <h1>Admin Login</h1>
-
-            <?php
-            if (isset($error)) {
-                echo "<div class='alert alert-danger'>$error</div>";
-            }
-            ?>
-            <div class="textbox">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <input type="text" placeholder="Username" name="username" required>
-            </div>
-
-            <div class="textbox">
-                <i class="fa fa-lock" aria-hidden="true"></i>
-                <input type="password" placeholder="Password" name="password" required>
-            </div>
-
-            <input class="button" type="submit" name="login" value="Sign In">
         </div>
-    </form>
+    </section>
+
+
+     <!-- Categories Section -->
+     <section class="categories">
+        <div class="category">
+            <img src="./images/Fruits.jpg" alt="Fruits">
+            <p>Fruits</p>
+        </div>
+        <div class="category">
+            <img src="./images/Vegetables.jpg" alt="Vegetables">
+            <p>Vegetables</p>
+        </div>
+        <div class="category">
+            <img src="./images/Legumes.jpg" alt="Legumes">
+            <p>Legumes</p>
+        </div>
+        <div class="category">
+            <img src="./images/nuts.jpg" alt="Nuts">
+            <p>Nuts</p>
+        </div>
+        <div class="category">
+            <img src="./images/flowers.jpg" alt="Respiratory Care">
+            <p>Respiratory Care</p>
+        </div> 
+    </section>
+    
+    <!-- Contact US Part Starts -->
+<section class="contact-section" id="contact">
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Contact Us</h1>
+            <p>Reach out to us for any inquiries or to learn more about our farms and queries..</p>
+        </div>
+
+        <div class="contact-details">
+            <div class="detail-item">
+                <i class="fa fa-phone"></i>
+                <p>Call Us: (+91) 879023740</p>
+            </div>
+            <div class="detail-item">
+                <i class="fa fa-envelope"></i>
+                <p>Email Us: agrimarket@gmail.com.com</p>
+            </div>
+            <div class="detail-item">
+                <i class="fa fa-map-marker"></i>
+                <p>Mysore <br> Karnataka, 673NH, India</p>
+            </div>
+        </div>
+
+        <div class="contact-button-container">
+            <a href="contact_us.php" class="contact-btn">Contact Us</a>
+        </div>
+    </div>
+</section>
+<!-- Contact US Part ends -->
+
+
+
+     <!-- Footer section starts -->
+     <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Agriculture Marketplace. All rights reserved.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section ends -->
+
 </body>
 </html>
