@@ -1,0 +1,170 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f1fef7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #dfe2e0;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h3 {
+    text-align: center;
+    color: green;
+}
+
+.account-header {
+    text-align: center;
+    font-size: 25px;
+}
+
+.account-header i {
+    font-size: 45px;
+    display: block; 
+    margin-bottom: 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="radio"] {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    width: auto;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+button {
+    background-color: green;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.footer-text a {
+    text-decoration: none;
+    color: navy;
+    font-weight: bold;
+}
+
+.form-element {
+    margin-bottom: 20px;
+}
+
+.form-element label {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-element input,
+.form-element select,
+.form-element textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+}
+
+/* Contact Us */
+
+.contact-icon {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .contact-icon i {
+    font-size: 40px;
+    color: #f77f00;
+  }
+  
+  .contact-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .para-text {
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;         
+    margin: 20px 0; 
+    font-style: italic;  
+    font-family: 'Roboto', sans-serif;
+}
+
+.success-message, .error-message {
+    text-align: center;
+    margin: 15px 0;
+}
+.success-message {
+    color: green;
+}
+.error-message {
+    color: red;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 20px;
+    }
+}
